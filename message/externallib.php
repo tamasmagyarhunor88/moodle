@@ -73,8 +73,8 @@ class core_message_external extends external_api {
     public static function send_instant_messages($messages = array()) {
         global $CFG, $USER, $DB;
 
-        // Check if messaging is enabled.
-        if (empty($CFG->messaging)) {
+        // Check if private messaging between users and notifications are allowed.
+        if (empty($CFG->messaging) && empty($CFG->notifications)) {
             throw new moodle_exception('disabled', 'message');
         }
 
